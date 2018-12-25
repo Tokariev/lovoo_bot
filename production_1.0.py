@@ -12,11 +12,11 @@ import sys, os
 
 
 def write_to_log(message='', exception='', exc_info=''):
-    exc_type, exc_obj, exc_tb = exc_info
+    info = exc_info
     # a Open an existing file for appending plain text
     log_file = open('log.log', 'a')
-    log_file.write('{0} {1} {2} {3}, line {4}\n'.format(datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S"), message,
-                                                  exception, exc_type, exc_tb.tb_lineno))
+    log_file.write('{0} {1} {2}\n'.format(datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S"), message,
+                                          exception, info))
     log_file.close()
 
 
@@ -67,21 +67,24 @@ def add_to_black_list(id):
 def like_it(account):
     usr = ''
     password = ''
-    likes = 0
+    max_likes = None
     try:
         arr = account.split('|')
         if len(arr) >= 2:
             usr = arr[0]
             password = arr[1]
             if len(arr) == 3:
-                likes = arr[2]
+                try:
+                    max_likes = int(arr[2])
+                except ValueError as error:
+                    write_to_log('', error, sys.exc_info())
     except Exception as error:
         write_to_log("Exception", error, sys.exc_info())
         return
 
     try:
         browser = webdriver.Chrome()
-        browser.implicitly_wait(10)  # seconds
+        browser.implicitly_wait(5)  # seconds
         browser.set_window_position(900, 0)
         browser.get("https://de.lovoo.com/")
         login_btn = browser.find_element(By.XPATH, '//*[contains(text(), "Einloggen")]')
@@ -100,22 +103,15 @@ def like_it(account):
 
     try:
         # Dein profil
-        browser.find_element(By.XPATH, '//*[contains(text(), "Dein Profil")]')
-        WebDriverWait(browser, 10).until(
-            EC.presence_of_element_located((By.XPATH, '//*[contains(text(), "Dein Profil")]'))
-        ).click()
+        browser.find_element(By.XPATH, '//*[contains(text(), "Dein Profil")]').click()
 
         # Mögen dich
-        WebDriverWait(browser, 10).until(
-            EC.presence_of_element_located(
-                (By.XPATH, '/html/body/div[1]/ng-view/div/div[2]/div/div[1]/div/ng-include/nav[2]/a[2]'))
-        ).click()
+        browser.find_element(By.XPATH,
+                             '/html/body/div[1]/ng-view/div/div[2]/div/div[1]/div/ng-include/nav[2]/a[2]').click()
 
         # Self icon
-        WebDriverWait(browser, 10).until(
-            EC.presence_of_element_located(
-                (By.XPATH, '//a[contains(@border,"2")]'))
-        )
+        browser.find_element(By.XPATH, '//a[contains(@border,"2")]')
+
         all_user = browser.find_elements(By.XPATH, '//div[contains(@class, "user-image user-userpic")]')
         # all_user = browser.find_elements(By.XPATH, '// a[contains( @ href, "/profile/")]')
     except TimeoutException as error:
@@ -136,29 +132,36 @@ def like_it(account):
                 # Open_account_detail_window
                 user.click()
                 time.sleep(2)
-                # Click on like button
-                WebDriverWait(browser, 1).until(
-                    EC.presence_of_element_located((By.XPATH,
-                                                    '//*[@id="profile-details"]/div/div[3]/div/button'))
-                ).click()
+
+                try:
+                    # find like button
+                    like = browser.find_element(By.XPATH, '//*[@id="profile-details"]/div/div[3]/div/button')
+                    like.click()
+                except:
+                    # Next iteration wile liked
+                    webdriver.ActionChains(browser).send_keys(Keys.ESCAPE).perform()
+                    write_to_log('Account ' + str(user.get_attribute('title')) + ' was already liked.', exc_info=sys.
+                                 exc_info())
+                    time.sleep(1)
+                    continue
+
                 try:
                     # Try to catch congratulations message popup
-                    WebDriverWait(browser, 1).until(
-                        EC.presence_of_element_located((By.XPATH, '/html/body/div[*]/div/div/div/div[1]/div/i')))
+                    browser.find_element(By.XPATH, '/html/body/div[*]/div/div/div/div[1]/div/i')
                     time.sleep(2)
                     add_to_black_list(id)
-                except TimeoutException as error:
-                    # Try to catch not active message popup /html/body[contains(@class, 'alert-error')]
-                    WebDriverWait(browser, 1).until(
-                        EC.presence_of_element_located((By.XPATH, '/html/body[contains(@class, "alert-error")]')))
-                    time.sleep(2)
-                    write_to_log("Account " + id + " is not activ", error, sys.exc_info())
-                    pass
+                    if max_likes is not None:
+                        max_likes -= 1
+                        if max_likes == 0:
+                            break
+                except Exception as error:
+                    write_to_log("Account " + id + " is not active or not verficated", error, sys.exc_info())
+                    break
                 finally:
                     webdriver.ActionChains(browser).send_keys(Keys.ESCAPE).perform()
-                    time.sleep(2)
+                    time.sleep(1)
                     webdriver.ActionChains(browser).send_keys(Keys.ESCAPE).perform()
-                    time.sleep(2)
+                    time.sleep(1)
     except Exception as error:
         write_to_log("Try to make like", error, sys.exc_info())
 
@@ -166,8 +169,6 @@ def like_it(account):
         write_to_log("All users elements exception", error, sys.exc_info())
         browser.quit()
         return
-
-
     finally:
         browser.quit()
 
@@ -178,3 +179,4 @@ accounts_list = read_users_info_to_list('Test Acounts.txt')
 if not is_list_empty(accounts_list):
     for account in accounts_list:
         like_it(account)
+
