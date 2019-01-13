@@ -122,7 +122,6 @@ class Controller(object):
         # Wait to load page
         time.sleep(SCROLL_PAUSE_TIME)
 
-
     def get_next_user(self, element, driver):
         # If last element on the page
         if element % 25 == 0:
@@ -131,8 +130,8 @@ class Controller(object):
         try:
             self.next_user = self.wait.until(
                 EC.presence_of_element_located((By.XPATH,
-                                                 '//*[@id="page-content"]/list-page/infinite-list/div[1]/div[' + str(
-                                                     element) + ']/div/a/div[1]')))
+                                                '//*[@id="page-content"]/list-page/infinite-list/div[1]/div[' + str(
+                                                    element) + ']/div/a/div[1]')))
             return self.next_user
         except Exception as e:
             print('Next user was not found')
@@ -248,6 +247,7 @@ class Controller(object):
                 self.close_info_window(self.driver)
                 self.user_number += 1
 
+            input("Like exception. Press Enter to continue...")
             self.driver.quit()
 
     def read_accoutn_list(self, path_to_file):
@@ -286,6 +286,7 @@ class Controller(object):
                 file.write("%s\n" % user_id)
         print('Save black list.\n')
 
+
 # ### RUN ### #
 
 try:
@@ -299,9 +300,10 @@ try:
     ctrl.like(model.accoutn_list)
 except Exception as e:
     ctrl.write_to_log()
+    input("Main exception. Press Enter to continue...")
 finally:
     ctrl.save_black_list_to_file(black_list_path, model.black_list)
     ctrl.driver.quit()
-    input("Press Enter to continue...")
+    input("Press Enter to exit...")
 
 atexit.register(ctrl.save_black_list_to_file(black_list_path, model.black_list))
