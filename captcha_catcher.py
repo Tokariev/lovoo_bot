@@ -155,6 +155,7 @@ class Controller(object):
             self.driver = webdriver.Chrome(chrome_options=self.chrome_options)
             self.driver.implicitly_wait(7)
             self.wait = WebDriverWait(self.driver, 20)
+
             try:
                 self.driver.get(self.url)
                 self.login_btn = self.wait.until(
@@ -180,6 +181,7 @@ class Controller(object):
                 self.wait.until(EC.presence_of_element_located((By.XPATH, '//a[contains(@border,"2")]')))
                 print('Mögen dich Seite')
             except Exception as e:
+                input("Captcha")
                 self.write_to_log()
                 self.driver.quit()
                 continue

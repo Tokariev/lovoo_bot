@@ -3,7 +3,7 @@ import datetime
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
-import time
+from time import sleep
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.common.keys import Keys
 import sys
@@ -12,6 +12,7 @@ import logging
 from logging_utils import setup_logging_to_file
 import linecache
 import atexit
+import requests
 
 
 class Controller(object):
@@ -120,7 +121,7 @@ class Controller(object):
         # Scroll down to bottom
         driver.execute_script("window.scrollTo(0, document.body.scrollHeight);")
         # Wait to load page
-        time.sleep(SCROLL_PAUSE_TIME)
+        sleep(SCROLL_PAUSE_TIME)
 
 
     def get_next_user(self, element, driver):
@@ -140,11 +141,53 @@ class Controller(object):
             return False
 
     def close_info_window(self, driver):
-        time.sleep(2)
+        sleep(2)
         webdriver.ActionChains(driver).send_keys(Keys.ESCAPE).perform()
-        time.sleep(2)
+        sleep(2)
         webdriver.ActionChains(driver).send_keys(Keys.ESCAPE).perform()
-        time.sleep(2)
+        sleep(2)
+
+    def is_captcha(self):
+        try:
+            captcha = self.wait.until(
+                EC.presence_of_element_located((By.XPATH,
+                                                '//*[@id="challenge-form"]/script')))
+            data_sitekey = captcha.get_attribute('data-sitekey')
+            print('Captcha was found')
+            return data_sitekey
+        except:
+            return False
+
+    def login(self, driver, user, password):
+        try:
+            driver.get(self.url)
+            self.login_btn = self.wait.until(
+                EC.element_to_be_clickable((By.XPATH, '//*[contains(text(), "Einloggen")]')))
+            self.login_btn.click()
+            # self.driver.find_element(By.XPATH, '//*[contains(text(), "Einloggen")]').click()
+            self.email_input = self.wait.until(
+                EC.presence_of_element_located((By.XPATH, '//input[@name="authEmail"]')))
+            self.email_input.send_keys(user)
+            self.password_input = self.wait.until(
+                EC.presence_of_element_located((By.XPATH, '//input[@name="authPassword"]')))
+            self.password_input.send_keys(password)
+            login_btn = self.wait.until(EC.element_to_be_clickable((By.XPATH,
+                                                                    '//*[@id="form"]/div[2]/div[2]/button')))
+            sleep(1)
+
+            login_btn.click()
+            # Your profile
+            self.wait.until(EC.element_to_be_clickable((By.XPATH, '//*[contains(text(), "Dein Profil")]'))).click()
+            # Like you site
+            self.wait.until(EC.element_to_be_clickable((By.XPATH,
+                                                        '/html/body/div[1]/ng-view/div/div[2]/div/div[1]/div/ng-include/nav[2]/a[2]'))).click()
+            # Self icon
+            self.wait.until(EC.presence_of_element_located((By.XPATH, '//a[contains(@border,"2")]')))
+            print('Mögen dich Seite')
+            return True
+        except Exception as e:
+            self.write_to_log()
+            return False
 
     def like(self, account_list):
         for account in account_list:
@@ -152,41 +195,28 @@ class Controller(object):
             self.chrome_options = webdriver.ChromeOptions()
             # self.chrome_options.add_argument('--proxy-server=%s' % self.proxy)
             # self.chrome_options.add_argument("headless")
-            self.url = 'https://de.lovoo.com/login_check'
+            self.url = 'https://de.lovo.com/login_check'
             self.driver = webdriver.Chrome(chrome_options=self.chrome_options)
-            self.driver.implicitly_wait(7)
-            self.wait = WebDriverWait(self.driver, 20)
-            try:
-                self.driver.get(self.url)
-                self.login_btn = self.wait.until(
-                    EC.element_to_be_clickable((By.XPATH, '//*[contains(text(), "Einloggen")]')))
-                self.login_btn.click()
-                # self.driver.find_element(By.XPATH, '//*[contains(text(), "Einloggen")]').click()
-                self.email_input = self.wait.until(
-                    EC.presence_of_element_located((By.XPATH, '//input[@name="authEmail"]')))
-                self.email_input.send_keys(user)
-                self.password_input = self.wait.until(
-                    EC.presence_of_element_located((By.XPATH, '//input[@name="authPassword"]')))
-                self.password_input.send_keys(password)
-                login_btn = self.wait.until(EC.element_to_be_clickable((By.XPATH,
-                                                                        '//*[@id="form"]/div[2]/div[2]/button')))
-                time.sleep(1)
-                login_btn.click()
-                # Your profile
-                self.wait.until(EC.element_to_be_clickable((By.XPATH, '//*[contains(text(), "Dein Profil")]'))).click()
-                # Like you site
-                self.wait.until(EC.element_to_be_clickable((By.XPATH,
-                                                            '/html/body/div[1]/ng-view/div/div[2]/div/div[1]/div/ng-include/nav[2]/a[2]'))).click()
-                # Self icon
-                self.wait.until(EC.presence_of_element_located((By.XPATH, '//a[contains(@border,"2")]')))
-                print('Mögen dich Seite')
-            except Exception as e:
-                self.write_to_log()
-                self.driver.quit()
-                continue
+            self.driver.implicitly_wait(15)
+            self.wait = WebDriverWait(self.driver, 30)
+
+            if self.login(self.driver, user, password):
+                pass
+            else:
+                # Try to solve captcha
+                data_sitekey = self.is_captcha()
+                if data_sitekey:
+                    self.solve_captcha(data_sitekey, self.driver)
+                    sleep(5)
+                    self.driver.refresh()
+                    sleep(5)
+                else:
+                    self.driver.quit()
+                    continue
 
             self.user_number = 1
             self.like_counter = 0
+
             while max_likes != self.like_counter:
                 self.next_user = self.get_next_user(self.user_number, self.driver)
 
@@ -194,8 +224,6 @@ class Controller(object):
                     print('No more users')
                     break
 
-                # Like button not active//*[@id="profile-details"]/div/div[3]/div/div
-                # Like button active    //*[@id="profile-details"]/div/div[3]/div/button
                 parent_el = self.next_user.find_element(By.XPATH, '..')
                 href = parent_el.get_attribute('href')
                 title = self.next_user.get_attribute('title')
@@ -212,15 +240,23 @@ class Controller(object):
                     print(title + ' is in black list')
                     # self.close_info_window(self.driver)
                     self.user_number += 1
-                    time.sleep(0.5)
+                    sleep(0.5)
                     continue
 
                 try:
                     self.next_user.click()
                 except:
-                    self.close_info_window(self.driver)
-                    self.user_number += 1
-                    continue
+                    # Try to solve captcha
+                    data_sitekey = self.is_captcha()
+                    if data_sitekey:
+                        self.solve_captcha(data_sitekey, self.driver)
+                        sleep(5)
+                        self.driver.refresh()
+                        sleep(5)
+                    else:
+                        self.close_info_window(self.driver)
+                        self.user_number += 1
+                        continue
 
                 self.like_btn = self.get_like_button()
 
@@ -229,9 +265,17 @@ class Controller(object):
                     try:
                         self.like_btn.click()
                     except:
-                        self.close_info_window(self.driver)
-                        self.user_number += 1
-                        continue
+                        # Try to solve captcha
+                        data_sitekey = self.is_captcha()
+                        if data_sitekey:
+                            self.solve_captcha(data_sitekey, self.driver)
+                            sleep(5)
+                            self.driver.refresh()
+                            sleep(5)
+                        else:
+                            self.close_info_window(self.driver)
+                            self.user_number += 1
+                            continue
 
                     if self.is_congratulations_message(self.driver):
                         self.add_to_black_list(self.user_id)
@@ -285,6 +329,35 @@ class Controller(object):
             for user_id in black_list:
                 file.write("%s\n" % user_id)
         print('Save black list.\n')
+
+    def solve_captcha(self, data_sitekey, driver):
+        # Add these values
+        API_KEY = '4bfbf3a52ca3d8fdf437db6b49e03eeb'  # Your 2captcha API KEY
+        site_key = data_sitekey
+        url = driver.current_url
+
+        s = requests.Session()
+        ### Get cookie from Selenium
+        cookies = driver.get_cookie()
+        for cookie in cookies:
+            s.cookies.set(cookie['name'], cookie['value'])
+
+        captcha_id = s.post(
+            "http://2captcha.com/in.php?key={}&method=userrecaptcha&googlekey={}&pageurl={}".format(API_KEY, site_key,
+                                                                                                    url))
+        recaptcha_answer = s.get("http://2captcha.com/res.php?key={}&action=get&id={}".format(API_KEY, captcha_id)).text
+        print("solving ref captcha...")
+        while 'CAPCHA_NOT_READY' in recaptcha_answer:
+            sleep(5)
+            recaptcha_answer = s.get(
+                "http://2captcha.com/res.php?key={}&action=get&id={}".format(API_KEY, captcha_id)).text
+        recaptcha_answer = recaptcha_answer.split('|')[1]
+        payload = {
+            'key': 'value',
+            'gresponse': recaptcha_answer
+        }
+        response = s.post(url, payload)
+        print("Captcha was solved")
 
 # ### RUN ### #
 
