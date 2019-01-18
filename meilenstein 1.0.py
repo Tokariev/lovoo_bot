@@ -13,6 +13,8 @@ from logging_utils import setup_logging_to_file
 import linecache
 import atexit
 import requests
+import gspread
+from oauth2client.service_account import ServiceAccountCredentials
 
 
 class Controller(object):
@@ -24,34 +26,6 @@ class Controller(object):
         # self.chrome_options.add_argument("headless")
         self.url = 'https://de.lovoo.com/login_check'
         # self.driver = webdriver.Chrome(chrome_options=self.chrome_options)
-        # self.driver.implicitly_wait(5)
-        # self.driver = webdriver.Chrome()
-        # self.wait = WebDriverWait(self.driver, 10)
-
-        # initialize the log settings
-        # logging.basicConfig(filename='app.log', level=logging.INFO)
-
-    def write_to_log2(self, message='', exception='', exc_info=''):
-        info = exc_info
-        # a Open an existing file for appending plain text
-        log_file = open('log.log', 'a')
-        log_file.write(
-            '{0} {1} {2}\n Error of the line {3}'.format(datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S"), message,
-                                                         exception, info, info[-1].tb_lineno))
-        log_file.close()
-
-        ####
-        exc_type, exc_obj, tb = sys.exc_info()
-        f = tb.tb_frame
-        lineno = tb.tb_lineno
-        filename = f.f_code.co_filename
-        linecache.checkcache(filename)
-        line = linecache.getline(filename, lineno, f.f_globals)
-        log_file = open('log.log', 'a')
-        log_file.write('{} EXCEPTION IN ({}, LINE {} "{}"): {}\n'
-                       .format(datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
-                               filename, lineno, line.strip(), exc_obj))
-        log_file.close()
 
     def write_to_log(self):
         exc_type, exc_obj, tb = sys.exc_info()
@@ -123,7 +97,6 @@ class Controller(object):
         # Wait to load page
         sleep(SCROLL_PAUSE_TIME)
 
-
     def get_next_user(self, element, driver):
         # If last element on the page
         if element % 25 == 0:
@@ -147,8 +120,9 @@ class Controller(object):
         webdriver.ActionChains(driver).send_keys(Keys.ESCAPE).perform()
         sleep(2)
 
-    def is_captcha(self):
+    def is_captcha(self, driver):
         try:
+            driver.refresh()
             captcha = self.wait.until(
                 EC.presence_of_element_located((By.XPATH,
                                                 '//*[@id="challenge-form"]/script')))
@@ -187,6 +161,7 @@ class Controller(object):
             return True
         except Exception as e:
             self.write_to_log()
+            print("Except login")
             return False
 
     def like(self, account_list):
@@ -195,7 +170,7 @@ class Controller(object):
             self.chrome_options = webdriver.ChromeOptions()
             # self.chrome_options.add_argument('--proxy-server=%s' % self.proxy)
             # self.chrome_options.add_argument("headless")
-            self.url = 'https://de.lovo.com/login_check'
+            self.url = 'https://de.lovoo.com/login_check'
             self.driver = webdriver.Chrome(chrome_options=self.chrome_options)
             self.driver.implicitly_wait(15)
             self.wait = WebDriverWait(self.driver, 30)
@@ -204,12 +179,13 @@ class Controller(object):
                 pass
             else:
                 # Try to solve captcha
-                data_sitekey = self.is_captcha()
+                data_sitekey = self.is_captcha(self.driver)
                 if data_sitekey:
                     self.solve_captcha(data_sitekey, self.driver)
                     sleep(5)
                     self.driver.refresh()
                     sleep(5)
+                    self.login(self.driver, user, password)
                 else:
                     self.driver.quit()
                     continue
@@ -247,7 +223,8 @@ class Controller(object):
                     self.next_user.click()
                 except:
                     # Try to solve captcha
-                    data_sitekey = self.is_captcha()
+                    print("Except next user click")
+                    data_sitekey = self.is_captcha(self.driver)
                     if data_sitekey:
                         self.solve_captcha(data_sitekey, self.driver)
                         sleep(5)
@@ -266,7 +243,7 @@ class Controller(object):
                         self.like_btn.click()
                     except:
                         # Try to solve captcha
-                        data_sitekey = self.is_captcha()
+                        data_sitekey = self.is_captcha(self.driver)
                         if data_sitekey:
                             self.solve_captcha(data_sitekey, self.driver)
                             sleep(5)
@@ -294,30 +271,40 @@ class Controller(object):
 
             self.driver.quit()
 
-    def read_accoutn_list(self, path_to_file):
-        path = Path(path_to_file)
+    def read_accoutn_list(self, path_to_accounts):
+
+        path = Path(path_to_accounts)
         if path.is_file():
             try:
                 file = open(path, 'r+')
                 model.accoutn_list = [line.rstrip('\n') for line in file.readlines()]
+                if not model.accoutn_list:
+                    print('\nAccount list is empty')
+                    input('Press Enter to exit...')
             except Exception as e:
                 self.write_to_log()
-                print('Failed to read ' + str(path))
+                input('Failed to read ' + str(path))
             finally:
                 file.close()
         else:
-            sys.exit('File not exist ' + path_to_file)
+            print('File ' + str(path) + ' not exist.')
+            input('"Press Enter to exit..."')
+            sys.exit()
 
     def read_black_list(self, path_to_file):
         path = Path(path_to_file)
-        try:
-            file = open(path, 'r+')
-            model.black_list = [line.rstrip('\n') for line in file.readlines()]
-        except IOError as e:
-            open(path, 'w')
-            print('No black_list file. File was created.')
-            self.write_to_log()
-        finally:
+        if path.is_file():
+            try:
+                file = open(path, 'r+')
+                model.black_list = [line.rstrip('\n') for line in file.readlines()]
+            except IOError as e:
+                open(path, 'w')
+                print('Failed to read ' + str(path))
+                self.write_to_log()
+            finally:
+                file.close()
+        else:
+            file = open(path, 'w+')
             file.close()
 
     def is_id_in_black_list(self, user_id):
@@ -359,14 +346,49 @@ class Controller(object):
         response = s.post(url, payload)
         print("Captcha was solved")
 
+    def read_remote_secret(self):
+        # use creds to create a client to interact with the Google Drive API
+        scope = ['https://spreadsheets.google.com/feeds', 'https://www.googleapis.com/auth/drive']
+        creds = ServiceAccountCredentials.from_json_keyfile_name('client_secret.json', scope)
+        client = gspread.authorize(creds)
+        # Find a workbook by name and open the first sheet
+        # Make sure you use the right name here.
+        sheet = client.open("keep_secret").sheet1
+        # Extract and print all of the values
+        list_of_hashes = sheet.get_all_values()
+
+        if not list_of_hashes:
+            print("Password was not found")
+            input("Press Enter to exit...")
+            sys.exit()
+        else:
+            for el in list_of_hashes:
+                if el[0] == 'Lovoo':
+                    secret = (el[1])
+        return secret
+
+    def check_password(self, secret):
+        password = input("Enter password: ")
+        try_count = 0
+        while secret != password:
+            print("Wrong password. Try again.\n\n")
+            password = input("Enter password: ")
+            try_count += 1
+            if try_count == 5:
+                sys.exit()
+
+
+
 # ### RUN ### #
 
 try:
     ctrl = Controller()
+    secret = ctrl.read_remote_secret()
+    ctrl.check_password(secret)
+
     model = Model.Model()
     accoutn_list_path = 'accounts.txt'
     black_list_path = 'black_list.txt'
-
     ctrl.read_accoutn_list(accoutn_list_path)
     ctrl.read_black_list(black_list_path)
     ctrl.like(model.accoutn_list)

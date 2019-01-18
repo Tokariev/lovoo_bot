@@ -17,15 +17,17 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="CoverageDataManager">
+    <SUITE FILE_PATH="coverage/Program$captcha_catcher.coverage" NAME="captcha_catcher Coverage Results" MODIFIED="1547675496258" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/Program$delete.coverage" NAME="delete Coverage Results" MODIFIED="1544386400441" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/Program$new_recaptcha_image_group.coverage" NAME="new_recaptcha_image_group Coverage Results" MODIFIED="1545423620307" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="D:/Download Chrome/dbc_api_v4_6_python3/dbc_api_python3" />
     <SUITE FILE_PATH="coverage/Program$selenium.coverage" NAME="selenium Coverage Results" MODIFIED="1544801739308" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/Program$production_1_0.coverage" NAME="production_1.0 Coverage Results" MODIFIED="1545475315850" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/Program$requests_2_0.coverage" NAME="requests_2.0 Coverage Results" MODIFIED="1545663721767" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/Program$new_recaptcha_coordinates.coverage" NAME="new_recaptcha_coordinates Coverage Results" MODIFIED="1545423384914" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="D:/Download Chrome/dbc_api_v4_6_python3/dbc_api_python3" />
+    <SUITE FILE_PATH="coverage/Program$read_google_sheet.coverage" NAME="read_google_sheet Coverage Results" MODIFIED="1547834162201" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/Program$production_1_0_scroll.coverage" NAME="production_1.0_scroll Coverage Results" MODIFIED="1545480564370" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/Program$cookie.coverage" NAME="cookie Coverage Results" MODIFIED="1545928283440" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/Program$Unittests_in_meilenstein_1_0.coverage" NAME="Unittests in meilenstein 1.0 Coverage Results" MODIFIED="1547665662661" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/Program$Unittests_in_meilenstein_1_0.coverage" NAME="Unittests in meilenstein 1.0 Coverage Results" MODIFIED="1547839701201" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/Program$main.coverage" NAME="main Coverage Results" MODIFIED="1544707973430" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/Program$meilenstein_1_0.coverage" NAME="meilenstein 1.0 Coverage Results" MODIFIED="1545848169381" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/Program$request.coverage" NAME="request Coverage Results" MODIFIED="1545665863561" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
@@ -63,12 +65,51 @@
       <file leaf-file-name="meilenstein 1.0.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/meilenstein 1.0.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="245">
-              <caret line="202" column="0" lean-forward="true" selection-start-line="202" selection-start-column="0" selection-end-line="202" selection-end-column="0" />
+            <state relative-caret-position="341">
+              <caret line="383" column="4" lean-forward="false" selection-start-line="383" selection-start-column="4" selection-end-line="383" selection-end-column="4" />
               <folding>
                 <element signature="e#0#24#0" expanded="true" />
-                <element signature="e#5380#5566#0" expanded="false" />
+                <element signature="e#584#979#0" expanded="false" />
+                <element signature="e#1017#1540#0" expanded="false" />
+                <element signature="e#1581#2064#0" expanded="false" />
+                <element signature="e#2124#2330#0" expanded="false" />
+                <element signature="e#2382#2498#0" expanded="false" />
+                <element signature="e#2556#3143#0" expanded="false" />
+                <element signature="e#3188#3494#0" expanded="false" />
+                <element signature="e#3550#4159#0" expanded="false" />
+                <element signature="e#4210#4396#0" expanded="false" />
+                <element signature="e#4440#4833#0" expanded="false" />
+                <element signature="e#4888#6505#0" expanded="false" />
+                <element signature="e#6549#10890#0" expanded="false" />
+                <element signature="e#11666#12138#0" expanded="false" />
+                <element signature="e#12192#12302#0" expanded="false" />
+                <element signature="e#12369#12518#0" expanded="false" />
+                <element signature="e#12579#13804#0" expanded="false" />
+                <element signature="e#13848#14694#0" expanded="false" />
+                <element signature="e#14742#15024#0" expanded="false" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="read_google_sheet.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/read_google_sheet.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="118">
+              <caret line="8" column="0" lean-forward="false" selection-start-line="8" selection-start-column="0" selection-end-line="8" selection-end-column="0" />
+              <folding>
+                <element signature="e#0#14#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="client_secret.json" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/client_secret.json">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="85">
+              <caret line="5" column="39" lean-forward="false" selection-start-line="5" selection-start-column="19" selection-end-line="5" selection-end-column="65" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -76,8 +117,8 @@
       <file leaf-file-name="captcha_catcher.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/captcha_catcher.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="234">
-              <caret line="244" column="27" lean-forward="true" selection-start-line="244" selection-start-column="27" selection-end-line="244" selection-end-column="27" />
+            <state relative-caret-position="2907">
+              <caret line="184" column="37" lean-forward="false" selection-start-line="183" selection-start-column="20" selection-end-line="184" selection-end-column="37" />
               <folding>
                 <element signature="e#0#24#0" expanded="true" />
               </folding>
@@ -98,8 +139,8 @@
       <file leaf-file-name="imp.py" pinned="false" current-in-tab="false">
         <entry file="file://C:/Python/Python36-32/Lib/imp.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2992">
-              <caret line="176" column="0" lean-forward="false" selection-start-line="176" selection-start-column="0" selection-end-line="176" selection-end-column="0" />
+            <state relative-caret-position="131">
+              <caret line="171" column="0" lean-forward="false" selection-start-line="171" selection-start-column="0" selection-end-line="171" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -108,8 +149,8 @@
       <file leaf-file-name="utrunner.py" pinned="false" current-in-tab="false">
         <entry file="file://$APPLICATION_HOME_DIR$/helpers/pycharm/utrunner.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2584">
-              <caret line="155" column="0" lean-forward="false" selection-start-line="155" selection-start-column="0" selection-end-line="155" selection-end-column="0" />
+            <state relative-caret-position="131">
+              <caret line="64" column="0" lean-forward="false" selection-start-line="64" selection-start-column="0" selection-end-line="64" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -137,16 +178,6 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="errorhandler.py" pinned="false" current-in-tab="false">
-        <entry file="file://C:/Python/Python36-32/Lib/site-packages/selenium/webdriver/remote/errorhandler.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="4097">
-              <caret line="241" column="0" lean-forward="false" selection-start-line="241" selection-start-column="0" selection-end-line="241" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
     </leaf>
   </component>
   <component name="FileTemplateManagerImpl">
@@ -158,7 +189,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>dennydelain</find>
       <find>br</find>
       <find>denny</find>
       <find>name</find>
@@ -188,6 +218,7 @@
       <find>main</find>
       <find>like_counter</find>
       <find>get_a</find>
+      <find>is_captcha</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -220,6 +251,8 @@
         <option value="$PROJECT_DIR$/logging_utils.py" />
         <option value="$PROJECT_DIR$/close_event.py" />
         <option value="$PROJECT_DIR$/captcha_catcher.py" />
+        <option value="$PROJECT_DIR$/client_secret.json" />
+        <option value="$PROJECT_DIR$/read_google_sheet.py" />
         <option value="$PROJECT_DIR$/meilenstein 1.0.py" />
       </list>
     </option>
@@ -251,7 +284,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
+      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -266,7 +299,7 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="Scratches" />
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -278,24 +311,6 @@
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
   </component>
   <component name="RunManager" selected="Python tests.Unittests in meilenstein 1.0">
-    <configuration default="false" name="request" type="PythonConfigurationType" factoryName="Python" temporary="true">
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <module name="Program" />
-      <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/request.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <method />
-    </configuration>
     <configuration default="false" name="Unittests in meilenstein 1.0" type="tests" factoryName="Unittests" temporary="true" nameIsGenerated="true">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -317,24 +332,6 @@
       <option name="PUREUNITTEST" value="true" />
       <option name="PARAMS" value="" />
       <option name="USE_PARAM" value="false" />
-      <method />
-    </configuration>
-    <configuration default="false" name="meilenstein 1.0" type="PythonConfigurationType" factoryName="Python" temporary="true">
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <module name="Program" />
-      <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/meilenstein 1.0.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
       <method />
     </configuration>
     <configuration default="false" name="cookie" type="PythonConfigurationType" factoryName="Python" temporary="true">
@@ -369,6 +366,42 @@
       <module name="Program" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/close_event.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <method />
+    </configuration>
+    <configuration default="false" name="captcha_catcher" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="Program" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/captcha_catcher.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <method />
+    </configuration>
+    <configuration default="false" name="read_google_sheet" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="Program" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/read_google_sheet.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <method />
@@ -588,19 +621,19 @@
       <method />
     </configuration>
     <list size="5">
-      <item index="0" class="java.lang.String" itemvalue="Python.request" />
-      <item index="1" class="java.lang.String" itemvalue="Python tests.Unittests in meilenstein 1.0" />
-      <item index="2" class="java.lang.String" itemvalue="Python.meilenstein 1.0" />
-      <item index="3" class="java.lang.String" itemvalue="Python.cookie" />
-      <item index="4" class="java.lang.String" itemvalue="Python.close_event" />
+      <item index="0" class="java.lang.String" itemvalue="Python tests.Unittests in meilenstein 1.0" />
+      <item index="1" class="java.lang.String" itemvalue="Python.cookie" />
+      <item index="2" class="java.lang.String" itemvalue="Python.close_event" />
+      <item index="3" class="java.lang.String" itemvalue="Python.captcha_catcher" />
+      <item index="4" class="java.lang.String" itemvalue="Python.read_google_sheet" />
     </list>
     <recent_temporary>
       <list size="5">
         <item index="0" class="java.lang.String" itemvalue="Python tests.Unittests in meilenstein 1.0" />
-        <item index="1" class="java.lang.String" itemvalue="Python.close_event" />
-        <item index="2" class="java.lang.String" itemvalue="Python.cookie" />
-        <item index="3" class="java.lang.String" itemvalue="Python.meilenstein 1.0" />
-        <item index="4" class="java.lang.String" itemvalue="Python.request" />
+        <item index="1" class="java.lang.String" itemvalue="Python.read_google_sheet" />
+        <item index="2" class="java.lang.String" itemvalue="Python.captcha_catcher" />
+        <item index="3" class="java.lang.String" itemvalue="Python.close_event" />
+        <item index="4" class="java.lang.String" itemvalue="Python.cookie" />
       </list>
     </recent_temporary>
   </component>
@@ -695,38 +728,45 @@
       <option name="project" value="LOCAL" />
       <updated>1547380083149</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="Add captcha service">
+      <created>1547666590707</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1547666590707</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="Unittests_in_meilenstein_1_0 - 2019.01.11 at 21h 33m 41s.xml">
+    <history-entry file="Unittests_in_meilenstein_1_0 - 2019.01.18 at 20h 10m 36s.xml">
       <configuration name="Unittests in meilenstein 1.0" configurationId="tests" />
     </history-entry>
-    <history-entry file="Unittests_in_meilenstein_1_0 - 2019.01.11 at 21h 37m 21s.xml">
+    <history-entry file="Unittests_in_meilenstein_1_0 - 2019.01.18 at 20h 13m 28s.xml">
       <configuration name="Unittests in meilenstein 1.0" configurationId="tests" />
     </history-entry>
-    <history-entry file="Unittests_in_meilenstein_1_0 - 2019.01.11 at 21h 43m 08s.xml">
+    <history-entry file="Unittests_in_meilenstein_1_0 - 2019.01.18 at 20h 14m 43s.xml">
       <configuration name="Unittests in meilenstein 1.0" configurationId="tests" />
     </history-entry>
-    <history-entry file="Unittests_in_meilenstein_1_0 - 2019.01.11 at 21h 43m 50s.xml">
+    <history-entry file="Unittests_in_meilenstein_1_0 - 2019.01.18 at 20h 15m 28s.xml">
       <configuration name="Unittests in meilenstein 1.0" configurationId="tests" />
     </history-entry>
-    <history-entry file="Unittests_in_meilenstein_1_0 - 2019.01.16 at 18h 56m 29s.xml">
+    <history-entry file="Unittests_in_meilenstein_1_0 - 2019.01.18 at 20h 18m 37s.xml">
       <configuration name="Unittests in meilenstein 1.0" configurationId="tests" />
     </history-entry>
-    <history-entry file="Unittests_in_meilenstein_1_0 - 2019.01.16 at 19h 28m 23s.xml">
+    <history-entry file="Unittests_in_meilenstein_1_0 - 2019.01.18 at 20h 21m 11s.xml">
       <configuration name="Unittests in meilenstein 1.0" configurationId="tests" />
     </history-entry>
-    <history-entry file="Unittests_in_meilenstein_1_0 - 2019.01.16 at 19h 47m 22s.xml">
+    <history-entry file="Unittests_in_meilenstein_1_0 - 2019.01.18 at 20h 22m 30s.xml">
       <configuration name="Unittests in meilenstein 1.0" configurationId="tests" />
     </history-entry>
-    <history-entry file="Unittests_in_meilenstein_1_0 - 2019.01.16 at 19h 50m 09s.xml">
+    <history-entry file="Unittests_in_meilenstein_1_0 - 2019.01.18 at 20h 23m 26s.xml">
       <configuration name="Unittests in meilenstein 1.0" configurationId="tests" />
     </history-entry>
-    <history-entry file="Unittests_in_meilenstein_1_0 - 2019.01.16 at 20h 06m 15s.xml">
+    <history-entry file="Unittests_in_meilenstein_1_0 - 2019.01.18 at 20h 28m 00s.xml">
       <configuration name="Unittests in meilenstein 1.0" configurationId="tests" />
     </history-entry>
-    <history-entry file="Unittests_in_meilenstein_1_0 - 2019.01.16 at 20h 16m 30s.xml">
+    <history-entry file="Unittests_in_meilenstein_1_0 - 2019.01.18 at 20h 38m 09s.xml">
       <configuration name="Unittests in meilenstein 1.0" configurationId="tests" />
     </history-entry>
   </component>
@@ -749,11 +789,11 @@
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32928064" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.17831814" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4924012" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.45491388" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.4539007" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -780,7 +820,8 @@
     <MESSAGE value="Add method for check like button status" />
     <MESSAGE value="Add main functions." />
     <MESSAGE value="Fix get_next_user function" />
-    <option name="LAST_COMMIT_MESSAGE" value="Fix get_next_user function" />
+    <MESSAGE value="Add captcha service" />
+    <option name="LAST_COMMIT_MESSAGE" value="Add captcha service" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
   <component name="XDebuggerManager">
@@ -826,6 +867,16 @@
           <line>347</line>
           <option name="timeStamp" value="223" />
         </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/meilenstein 1.0.py</url>
+          <line>177</line>
+          <option name="timeStamp" value="311" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/read_google_sheet.py</url>
+          <line>8</line>
+          <option name="timeStamp" value="312" />
+        </line-breakpoint>
       </breakpoints>
       <breakpoints-dialog>
         <breakpoints-dialog />
@@ -837,7 +888,7 @@
           </properties>
         </breakpoint>
       </default-breakpoints>
-      <option name="time" value="311" />
+      <option name="time" value="327" />
     </breakpoint-manager>
     <watches-manager>
       <configuration name="tests">
@@ -846,6 +897,9 @@
         <watch expression="__name__" />
         <watch expression="self.like_counter" />
         <watch expression="element" />
+        <watch expression="list_of_hashes" />
+        <watch expression="secret" />
+        <watch expression="model.black_list" />
       </configuration>
       <configuration name="PythonConfigurationType">
         <watch expression="for_elem" />
@@ -867,27 +921,6 @@
     </watches-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/main.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/main.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/.gitignore">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/main.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -1035,10 +1068,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="340">
           <caret line="71" column="23" lean-forward="true" selection-start-line="71" selection-start-column="23" selection-end-line="71" selection-end-column="23" />
-          <folding>
-            <element signature="e#0#15#0" expanded="false" />
-            <element signature="e#3450#4981#0" expanded="false" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1197,22 +1227,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://C:/Python/Python36-32/Lib/imp.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2992">
-          <caret line="176" column="0" lean-forward="false" selection-start-line="176" selection-start-column="0" selection-end-line="176" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$APPLICATION_HOME_DIR$/helpers/pycharm/utrunner.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2584">
-          <caret line="155" column="0" lean-forward="false" selection-start-line="155" selection-start-column="0" selection-end-line="155" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://C:/Python/Python36-32/Lib/site-packages/selenium/webdriver/remote/webelement.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="10778">
@@ -1229,16 +1243,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/captcha_catcher.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="234">
-          <caret line="244" column="27" lean-forward="true" selection-start-line="244" selection-start-column="27" selection-end-line="244" selection-end-column="27" />
-          <folding>
-            <element signature="e#0#24#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Model.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="51">
@@ -1247,13 +1251,82 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/meilenstein 1.0.py">
+    <entry file="file://$PROJECT_DIR$/captcha_catcher.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="245">
-          <caret line="202" column="0" lean-forward="true" selection-start-line="202" selection-start-column="0" selection-end-line="202" selection-end-column="0" />
+        <state relative-caret-position="2907">
+          <caret line="184" column="37" lean-forward="false" selection-start-line="183" selection-start-column="20" selection-end-line="184" selection-end-column="37" />
           <folding>
             <element signature="e#0#24#0" expanded="true" />
-            <element signature="e#5380#5566#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/dist/read_google_sheet">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client_secret.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="5" column="39" lean-forward="false" selection-start-line="5" selection-start-column="19" selection-end-line="5" selection-end-column="65" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/read_google_sheet.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="118">
+          <caret line="8" column="0" lean-forward="false" selection-start-line="8" selection-start-column="0" selection-end-line="8" selection-end-column="0" />
+          <folding>
+            <element signature="e#0#14#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$APPLICATION_HOME_DIR$/helpers/pycharm/utrunner.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="131">
+          <caret line="64" column="0" lean-forward="false" selection-start-line="64" selection-start-column="0" selection-end-line="64" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://C:/Python/Python36-32/Lib/imp.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="131">
+          <caret line="171" column="0" lean-forward="false" selection-start-line="171" selection-start-column="0" selection-end-line="171" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/meilenstein 1.0.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="341">
+          <caret line="383" column="4" lean-forward="false" selection-start-line="383" selection-start-column="4" selection-end-line="383" selection-end-column="4" />
+          <folding>
+            <element signature="e#0#24#0" expanded="true" />
+            <element signature="e#584#979#0" expanded="false" />
+            <element signature="e#1017#1540#0" expanded="false" />
+            <element signature="e#1581#2064#0" expanded="false" />
+            <element signature="e#2124#2330#0" expanded="false" />
+            <element signature="e#2382#2498#0" expanded="false" />
+            <element signature="e#2556#3143#0" expanded="false" />
+            <element signature="e#3188#3494#0" expanded="false" />
+            <element signature="e#3550#4159#0" expanded="false" />
+            <element signature="e#4210#4396#0" expanded="false" />
+            <element signature="e#4440#4833#0" expanded="false" />
+            <element signature="e#4888#6505#0" expanded="false" />
+            <element signature="e#6549#10890#0" expanded="false" />
+            <element signature="e#11666#12138#0" expanded="false" />
+            <element signature="e#12192#12302#0" expanded="false" />
+            <element signature="e#12369#12518#0" expanded="false" />
+            <element signature="e#12579#13804#0" expanded="false" />
+            <element signature="e#13848#14694#0" expanded="false" />
+            <element signature="e#14742#15024#0" expanded="false" />
           </folding>
         </state>
       </provider>

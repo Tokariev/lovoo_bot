@@ -180,6 +180,9 @@ class Controller(object):
                 # Self icon
                 self.wait.until(EC.presence_of_element_located((By.XPATH, '//a[contains(@border,"2")]')))
                 print('Mögen dich Seite')
+                while True:
+                    self.driver.refresh()
+                    print('Refresch')
             except Exception as e:
                 input("Captcha")
                 self.write_to_log()
