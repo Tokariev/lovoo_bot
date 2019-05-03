@@ -334,7 +334,7 @@ class Controller(object):
             if try_count == 5:
                 sys.exit()
         print("Password is correct.")
-        sleep(0.5)
+        sleep(0.4)
         print('Loading...\n')
 
 
