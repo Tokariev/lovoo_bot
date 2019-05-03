@@ -171,7 +171,7 @@ class Controller(object):
             # self.chrome_options.add_argument('--proxy-server=%s' % self.proxy)
             # self.chrome_options.add_argument("headless")
             self.url = 'https://de.lovoo.com/login_check'
-            self.driver = webdriver.Chrome(chrome_options=self.chrome_options)
+            self.driver = webdriver.Chrome(options=self.chrome_options)
             self.driver.implicitly_wait(15)
             self.wait = WebDriverWait(self.driver, 30)
 
