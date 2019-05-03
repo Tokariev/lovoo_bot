@@ -105,8 +105,8 @@ class Controller(object):
         try:
             self.next_user = self.wait.until(
                 EC.presence_of_element_located((By.XPATH,
-                                                 '//*[@id="page-content"]/list-page/infinite-list/div[1]/div[' + str(
-                                                     element) + ']/div/a/div[1]')))
+                                                '//*[@id="page-content"]/list-page/infinite-list/div[1]/div[' + str(
+                                                    element) + ']/div/a/div[1]')))
             return self.next_user
         except Exception as e:
             print('Next user was not found')
@@ -165,11 +165,13 @@ class Controller(object):
             return False
 
     def like(self, account_list):
+        account_count = len(account_list)
         for account in account_list:
             user, password, max_likes = self.read_info_about_account(account)
             self.chrome_options = webdriver.ChromeOptions()
-            # self.chrome_options.add_argument('--proxy-server=%s' % self.proxy)
             # self.chrome_options.add_argument("headless")
+            # self.chrome_options.add_argument('--proxy-server=%s' % self.proxy)
+            self.chrome_options.add_argument("headless")
             self.url = 'https://de.lovoo.com/login_check'
             self.driver = webdriver.Chrome(options=self.chrome_options)
             self.driver.implicitly_wait(15)
@@ -259,7 +261,7 @@ class Controller(object):
                         self.like_counter += 1
                         print(str(self.like_counter) + ' likes pro ' + str(user) + ' max Anzahl ' + str(max_likes))
                     else:
-                        print(user + ' account not active, go to next')
+                        print(user + ' account not active, go to next\n')
                         # self.driver.quit()
                         break
                 else:
@@ -270,6 +272,7 @@ class Controller(object):
                 self.user_number += 1
 
             self.driver.quit()
+        print('All ' + str(account_count) + ' accounts have been processed')
 
     def read_accoutn_list(self, path_to_accounts):
 
@@ -376,16 +379,18 @@ class Controller(object):
             try_count += 1
             if try_count == 5:
                 sys.exit()
-
+        print("Password is correct.")
+        sleep(0.5)
+        print('Loading...\n')
 
 
 # ### RUN ### #
+
 
 try:
     ctrl = Controller()
     secret = ctrl.read_remote_secret()
     ctrl.check_password(secret)
-
     model = Model.Model()
     accoutn_list_path = 'accounts.txt'
     black_list_path = 'black_list.txt'
@@ -397,6 +402,6 @@ except Exception as e:
 finally:
     ctrl.save_black_list_to_file(black_list_path, model.black_list)
     ctrl.driver.quit()
-    input("Press Enter to continue...")
+    input("Press Enter to exit...")
 
-atexit.register(ctrl.save_black_list_to_file(black_list_path, model.black_list))
+# atexit.register(ctrl.save_black_list_to_file(black_list_path, model.black_list))
