@@ -180,17 +180,8 @@ class Controller(object):
             if self.login(self.driver, user, password):
                 pass
             else:
-                # Try to solve captcha
-                data_sitekey = self.is_captcha(self.driver)
-                if data_sitekey:
-                    self.solve_captcha(data_sitekey, self.driver)
-                    sleep(5)
-                    self.driver.refresh()
-                    sleep(5)
-                    self.login(self.driver, user, password)
-                else:
-                    self.driver.quit()
-                    continue
+                self.driver.quit()
+                continue
 
             self.user_number = 1
             self.like_counter = 0
@@ -244,17 +235,9 @@ class Controller(object):
                     try:
                         self.like_btn.click()
                     except:
-                        # Try to solve captcha
-                        data_sitekey = self.is_captcha(self.driver)
-                        if data_sitekey:
-                            self.solve_captcha(data_sitekey, self.driver)
-                            sleep(5)
-                            self.driver.refresh()
-                            sleep(5)
-                        else:
-                            self.close_info_window(self.driver)
-                            self.user_number += 1
-                            continue
+                        self.close_info_window(self.driver)
+                        self.user_number += 1
+                        continue
 
                     if self.is_congratulations_message(self.driver):
                         self.add_to_black_list(self.user_id)
@@ -319,35 +302,6 @@ class Controller(object):
             for user_id in black_list:
                 file.write("%s\n" % user_id)
         print('Save black list.\n')
-
-    def solve_captcha(self, data_sitekey, driver):
-        # Add these values
-        API_KEY = '4bfbf3a52ca3d8fdf437db6b49e03eeb'  # Your 2captcha API KEY
-        site_key = data_sitekey
-        url = driver.current_url
-
-        s = requests.Session()
-        ### Get cookie from Selenium
-        cookies = driver.get_cookie()
-        for cookie in cookies:
-            s.cookies.set(cookie['name'], cookie['value'])
-
-        captcha_id = s.post(
-            "http://2captcha.com/in.php?key={}&method=userrecaptcha&googlekey={}&pageurl={}".format(API_KEY, site_key,
-                                                                                                    url))
-        recaptcha_answer = s.get("http://2captcha.com/res.php?key={}&action=get&id={}".format(API_KEY, captcha_id)).text
-        print("solving ref captcha...")
-        while 'CAPCHA_NOT_READY' in recaptcha_answer:
-            sleep(5)
-            recaptcha_answer = s.get(
-                "http://2captcha.com/res.php?key={}&action=get&id={}".format(API_KEY, captcha_id)).text
-        recaptcha_answer = recaptcha_answer.split('|')[1]
-        payload = {
-            'key': 'value',
-            'gresponse': recaptcha_answer
-        }
-        response = s.post(url, payload)
-        print("Captcha was solved")
 
     def read_remote_secret(self):
         # use creds to create a client to interact with the Google Drive API
